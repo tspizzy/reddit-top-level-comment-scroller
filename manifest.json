@@ -1,13 +1,17 @@
 {
-   "background_page": "background.html",
+   "background" : {
+        "scripts" : ["background.js"]
+    },
    "content_scripts": [ {
       "js": [ "lib/prototype.js", "lib/scriptaculous.js", "lib/builder.js", "lib/effects.js", "lib/dragdrop.js", "lib/slider.js", "lib/controls.js", "scroll.js" ],
-      "matches": [ "http://www.reddit.com/*/comments/*" ]
+      "matches": [ "http://www.reddit.com/*/comments/*" ],
+      "run_at": "document_end"
    } ],
    "description": "Helps you scroll between top level comments on Reddit",
    "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCuTMlVqp2u792UxjH0Y1P95nrGOd1YvEZ+5kxRGMLWn9YDvvNGiBDXET5x1LPbEk7RvKryFylEFhQ2Gg8CbVjwK1Tg0FurKwT0iLnMpLsIypR9prfzbTUPnU0DoFn06tG4K/aF495uCTGbjJeBTyrrhppafbxO2xRYLYwxgOkASwIDAQAB",
    "name": "Reddit Top-Level Comment Scroller",
    "options_page": "options.html",
    "update_url": "http://clients2.google.com/service/update2/crx",
-   "version": "1.5"
+   "version": "1.5",
+   "manifest_version": 2
 }

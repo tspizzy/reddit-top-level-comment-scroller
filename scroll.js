@@ -32,13 +32,13 @@ function findByClassName(parent, name) {
 function getElementPos(theElement) {
   var selectedPosX = 0;
   var selectedPosY = 0;
-              
+
   while(theElement != null){
     selectedPosX += theElement.offsetLeft;
     selectedPosY += theElement.offsetTop;
     theElement = theElement.offsetParent;
   }
-  
+
   return {X : selectedPosX, Y : selectedPosY };
 }
 
@@ -96,7 +96,7 @@ function findNearest(dir) {
     break;
   default:
     alert('oops');
-  }   
+  }
 }
 
 function controlScroll(e) {
@@ -118,7 +118,7 @@ function controlScroll(e) {
 
 function addControl() {
   control = document.createElement('div');
-  
+
   control.style.position = 'fixed';
   control.style.marginLeft = 'auto';
   control.style.marginRight = 'auto';
@@ -132,28 +132,28 @@ function addControl() {
   control.style.height = '2.5em';
   control.style.textAlign = 'center';
   //control.style.overflow = "scroll";
-  
+
   var s = document.createElement('img');
   s.style.width = '100px';
   s.style.height = '100px';
   //s.src = 'http://upload.wikimedia.org/wikipedia/commons/archive/d/d6/20090514045710!1Mcolors.png';
   s.src = 'arrows.png';
   //control.appendChild( s );
-  
+
   var arrows = document.createElement('p');
   arrows.innerHTML = '&uarr; <p> &darr;';
   control.appendChild( arrows );
-  
+
   for(var i=0; i>sitetable.childNodes.length*10; i+=2) {
     var line = document.createElement('p');
     line.innerText = 'line ' + i;
     control.appendChild( line );
   }
-  
+
   control.style.backgroundColor = 'white';
   control.style.opacity = '1';
   control.style.zIndex = '99';
-  
+
   control.mouseIsOver = false;
   control.onmouseover = function()   {
       this.mouseIsOver = true;
@@ -161,54 +161,52 @@ function addControl() {
   control.onmouseout = function()   {
     this.mouseIsOver = false;
   };
-  
+
   control.onClick = function() {
     alert('ha');
     info.innerText = control.scrollTop;
   };
-  
+
   Event.observe(document, "mousewheel", controlScroll, false);
   Event.observe(document, "DOMMouseScroll", controlScroll, false);
-  
+
   chrome.extension.sendRequest({name: "getPreferences"},
      function(response)
      {
         enabled = response.Enabled;
         if (enabled != null) {
           if (enabled == 'true') {
-            document.body.appendChild( control ); 
+            document.body.appendChild( control );
           }
         } else {
-          document.body.appendChild( control );  
+          document.body.appendChild( control );
         }
      });
 }
 var info;
 function addInfo() {
   info = document.createElement('div');
-  
+
   info.style.position = 'fixed';
   info.style.right = '0px';
   info.style.top = '0px';
   info.style.width = '100px';
   info.style.height = '100px';
-  
+
   info.style.backgroundColor = 'red';
   info.style.zIndex = '99';
   info.innerText = 'Testing';
-  
+
   //document.body.appendChild( info );
 }
 
 function load() {
   addInfo();
 
-  var content = findByClassName(document.body, 'content');
-  var commentarea = findByClassName(content, 'commentarea');
-  sitetable = findByClassName(commentarea, 'sitetable nestedlisting');
+  sitetable = document.getElementsByClassName("sitetable nestedlisting")[0]
   addControl();
   curr = 0;
-  
+
   Event.observe(document, 'keydown', scroll);
 }
 load();
