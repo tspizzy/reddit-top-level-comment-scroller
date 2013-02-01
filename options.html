@@ -1,36 +1,17 @@
 <html>
 <head>
 <title>Reddit Comment Scoller Options</title>
+</head>
 
-<script type="text/javascript">
-
-function saveOptions() {
-  localStorage["RedditCommentScroller_box_enabled"] =
-             document.getElementById("enable").checked;
-}
-
-function restoreOptions() {
-  var value = localStorage["RedditCommentScroller_box_enabled"];
-  if (null != value) {
-      if (value == 'true')
-        document.getElementById("enable").checked = true;
-      else
-        document.getElementById("enable").checked = false;
-  }
-  else
-    document.getElementById("enable").checked = true;
-}
-
-</script>
-</head> 
- 
-<body onload="restoreOptions()">
+<body>
 
 <form>
 <input type="checkbox" id="enable" /><label for="enable">Enable mouse-wheel scroll box</label><br />
 </form>
 
-<button id="saveButton" onclick="saveOptions()">Save</button>
+<button id="saveButton">Save</button>
+
+<script src="options.js"></script>
 
 </body>
-</html> 
+</html>
