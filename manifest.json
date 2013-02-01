@@ -12,6 +12,6 @@
    "name": "Reddit Top-Level Comment Scroller",
    "options_page": "options.html",
    "update_url": "http://clients2.google.com/service/update2/crx",
-   "version": "1.5",
+   "version": "1.6",
    "manifest_version": 2
 }
