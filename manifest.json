@@ -10,7 +10,7 @@
     },
    "content_scripts": [ {
       "js": [ "lib/prototype.js", "lib/scriptaculous.js", "lib/builder.js", "lib/effects.js", "lib/dragdrop.js", "lib/slider.js", "lib/controls.js", "scroll.js" ],
-      "matches": [ "http://www.reddit.com/*/comments/*" ],
+      "matches": [ "https://www.reddit.com/*/comments/*" ],
       "run_at": "document_end"
    } ],
 
